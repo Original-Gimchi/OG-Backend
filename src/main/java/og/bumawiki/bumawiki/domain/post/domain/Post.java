@@ -17,19 +17,23 @@ public class Post extends BaseTimeEntity {
     private Long id;
 
     @Column(length = 32)
-    private Long title;
+    private String title;
 
     @Lob
-    private Long content;
+    private String content;
 
     private int view = 1;
 
 
     @Builder
-    public Post(Long id, Long title, Long content, int view) {
-        this.id = id;
+    public Post(String title, String content, int view) {
         this.title = title;
         this.content = content;
         this.view = view;
+    }
+
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
     }
 }
