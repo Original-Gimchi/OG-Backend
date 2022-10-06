@@ -1,4 +1,4 @@
-package og.bumawiki.bumawiki.domain.post;
+package og.bumawiki.bumawiki.domain.post.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
