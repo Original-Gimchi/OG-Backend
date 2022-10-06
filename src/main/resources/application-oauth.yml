@@ -2,8 +2,9 @@ spring:
   oauth:
     bsm:
       client:
-        id: 4c81669f
-        secretKey: 23d2fcfd83720865288b5e60ceb6e471
+        id: 124724f6
+        secretKey: ae028c0f4317b3940aafbc6ec118580a
       url:
         token: https://bssm.kro.kr/api/oauth/token
         resource: https://bssm.kro.kr/api/oauth/resource
+
