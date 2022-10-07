@@ -23,11 +23,10 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class PostService {
     private final PostRepository postRepository;
-    private final OkHttpClient okHttpClient;
     private final UserRepository userRepository;
 
     @Transactional
-    public Long createPost(PostCreateRequestDto request){
+    public Long create(PostCreateRequestDto request){
         Post post = postRepository.save(request.toEntity());
 
         return post.getId();
