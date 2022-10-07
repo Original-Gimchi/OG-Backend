@@ -21,6 +21,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Page<Post> findByViewDesc(@NotNull Pageable pageable);
 
     @NotNull
-    @Query("select p from Post p")
+    @Query("select p from Post p order by p.createdTime desc")
     Page<Post> findAll(@NotNull Pageable pageable);
 }
