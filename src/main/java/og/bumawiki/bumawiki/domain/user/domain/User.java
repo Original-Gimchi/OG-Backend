@@ -6,11 +6,17 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.*;
+import static lombok.AccessLevel.*;
+
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = PROTECTED)
 public class User {
-    @Id @GeneratedValue
+
+    @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     @Column(length = 32)
@@ -23,18 +29,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Column(length = 4)
-    private String classNumber;
-
     @Column(length = 16)
     private String password;
 
-    @Builder
-    public User(String email, String name, String classNumber, String password,Role role) {
-        this.email = email;
+    @Column(length = 32)
+    private String bsmToken;
+
+    public void updateUserName(String name){
         this.name = name;
-        this.classNumber = classNumber;
-        this.password = password;
-        this.role = role;
     }
 }
