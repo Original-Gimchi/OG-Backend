@@ -1,6 +1,7 @@
 package og.bumawiki.bumawiki.domain.post.web.api;
 
 import lombok.RequiredArgsConstructor;
+import og.bumawiki.bumawiki.domain.post.domain.type.PostType;
 import og.bumawiki.bumawiki.domain.post.service.PostService;
 import og.bumawiki.bumawiki.domain.post.web.dto.request.PostCreateRequestDto;
 import og.bumawiki.bumawiki.domain.post.web.dto.response.PostResponseDto;
@@ -26,7 +27,7 @@ public class PostApiController {
         return postService.create(requestDto);
     }
 
-    @GetMapping("/title")
+    @GetMapping("/find/title")
     @ResponseStatus(HttpStatus.OK)
     public Result<List<PostResponseDto>> findByTitle(@RequestParam String title,
                                                      @PageableDefault(size = 10) Pageable pageable){
@@ -34,7 +35,7 @@ public class PostApiController {
         return new Result<>(post.size(), post);
     }
 
-    @GetMapping("/viewDesc")
+    @GetMapping("/fnd/viewDesc")
     @ResponseStatus(HttpStatus.OK)
     public Result<List<PostResponseDto>> findByViewDesc(@PageableDefault(size = 10) Pageable pageable){
         List<PostResponseDto> post = postService.findByViewDesc(pageable);
@@ -42,12 +43,19 @@ public class PostApiController {
         return new Result<>(post.size(), post);
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/find/All")
     @ResponseStatus(HttpStatus.OK)
     public Result<List<PostResponseDto>> findAll(@PageableDefault(size = 10) Pageable pageable){
-        List<PostResponseDto> post = postService.findAll(pageable);
+        List<PostResponseDto> posts = postService.findAll(pageable);
 
-        return new Result<>(post.size(), post);
+        return new Result<>(posts.size(), posts);
+    }
+
+    @GetMapping("find/postType/{type}")
+    @ResponseStatus(HttpStatus.OK)
+    public Result<List<PostResponseDto>> findByType(@PathVariable PostType type, @PageableDefault(size = 10) Pageable pageable){
+        List<PostResponseDto> posts = postService.findByType(type, pageable);
+        return new Result<>(posts.size(), posts);
     }
 
     @PutMapping("/update/{id}")
@@ -55,4 +63,5 @@ public class PostApiController {
     public PostResponseDto update(@PathVariable Long id,@RequestBody PostCreateRequestDto postCreateRequestDto){
         return postService.update(id, postCreateRequestDto);
     }
+
 }

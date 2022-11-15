@@ -23,4 +23,20 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @NotNull
     @Query("select p from Post p order by p.createdTime desc")
     Page<Post> findAll(@NotNull Pageable pageable);
+
+    @NotNull
+    @Query("select p from Post p where p.postType = 'STUDENT'")
+    Page<Post> findStudent(@NotNull Pageable pageable);
+
+    @NotNull
+    @Query("select p from Post p where p.postType = 'TEACHER'")
+    Page<Post> findTeacher(@NotNull Pageable pageable);
+
+    @NotNull
+    @Query("select p from Post p where p.postType = 'ACCIDENT'")
+    Page<Post> findAccident(@NotNull Pageable pageable);
+
+    @NotNull
+    @Query("select p from Post p where p.postType = 'CLUB'")
+    Page<Post> findClub(@NotNull Pageable pageable);
 }

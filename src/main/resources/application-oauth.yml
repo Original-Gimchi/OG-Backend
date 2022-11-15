@@ -1,0 +1,12 @@
+spring:
+  oauth:
+    bsm:
+      client:
+        id: 124724f6
+        secretKey: ae028c0f4317b3940aafbc6ec118580a
+      url:
+        token: https://bssm.kro.kr/api/oauth/token
+        resource: https://bssm.kro.kr/api/oauth/resource
+  security:
+    jwt:
+      secret: c2lsdmVybmluZS10ZWNoLXNwjdwkdnwlaq90LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
